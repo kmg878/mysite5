@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+
+	<insert id="insertBoard" parameterType="kr.ac.sungkyul.mysite.vo.BoardVo">
+	<selectKey resultType="java.lang.Integer" keyProperty="no" order="BEFORE">
+		<![CDATA[
+					select seq_bbs.nextVal as no FROM DUAL
+		]]>
+	</selectKey>
+		<![CDATA[
+			insert into bbs
+			values
+			(
+				#{no},#{title},#{content},sysdate
+				
+			)
+		
+		]]>
+	</insert>
+	
+	<insert id="insertAttachFile" parameterType="kr.ac.sungkyul.mysite.vo.AttachFileVo">
+		<![CDATA[
+				insert into bbs_file
+				values(
+					seq_bbs_file.nextVal,#{no},#{path},#{orgName},#{saveName},#{fileSize}
+				)
+		
+		]]>
+	
+	</insert> 
+	
+	<select id ="selectAttachFileByNo"  parameterType="kr.ac.sungkyul.mysite.vo.AttachFileVo"  resultType="kr.ac.sungkyul.mysite.vo.AttachFileVo">
+			select FNO,NO,path,orgname,savename,filesize from bbs_file where no=#{no}
+	</select>
+	
+	<select id ="selectAttachFileByFNO" parameterType="kr.ac.sungkyul.mysite.vo.AttachFileVo"  resultType="kr.ac.sungkyul.mysite.vo.AttachFileVo">
+		select FNO,NO,path,orgname,savename,filesize  from bbs_file where fNO=#{fNO}
+	</select> 
+	
+	<select id="listBoard" resultType="kr.ac.sungkyul.mysite.vo.BoardVo">
+		<![CDATA[
+				select no,title,regDate from bbs
+			
+		]]>
+	</select>
+	
+	<select id="selectBoard" parameterType="kr.ac.sungkyul.mysite.vo.BoardVo" resultType="kr.ac.sungkyul.mysite.vo.BoardVo">
+		<![CDATA[
+				select no,title,content,regDate from bbs where no=#{no}
+			
+		]]>
+	</select>
+	
+	<update id="updateBoard" parameterType="kr.ac.sungkyul.mysite.vo.BoardVo" >
+		<![CDATA[
+				update bbs set title=#{title}, content=#{content} where no=#{no}
+		]]>
+	</update>
+
+</mapper>

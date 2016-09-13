@@ -3,6 +3,6 @@
 			<ul>
 				<li><a href="/mysite5/main">안대혁</a></li>
 				<li><a href="/mysite5/guestbook/list">방명록</a></li>
-				<li><a href="/mysite5/board/list">게시판</a></li>
+				<li><a href="/mysite5/bbs/list">게시판</a></li>
 			</ul>
 		</div>
