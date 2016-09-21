@@ -63,8 +63,8 @@ $("#btn_read").on("click",function(){
 	$.ajax({
 	      url : "readAjax",
 	      type: "POST",
-	      data: {"no":no},
-	      
+	      data :JSON.stringify(boardVo),
+	      contentType:"application/json",
 	      dataType: "json",
 	      success: function( boardVo ){
 	      	console.log(boardVo);
