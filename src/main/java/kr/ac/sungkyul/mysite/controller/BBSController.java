@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.ac.sungkyul.mysite.service.BBSService;
@@ -100,6 +101,19 @@ public class BBSController {
 			
 		fin.close();
 		    
+	}
+	
+	@RequestMapping(value = "view2", method = RequestMethod.GET)
+	public String view2() {
+
+		return "board/view2";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "readAjax", method = RequestMethod.POST)
+	public BoardVo readBoardAjax(int no) {
+		BoardVo boardVo = bbsService.selectBoardNo(no);
+		return boardVo;
 	}
 	
 	

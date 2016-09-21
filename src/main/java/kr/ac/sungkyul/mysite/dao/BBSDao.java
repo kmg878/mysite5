@@ -44,5 +44,9 @@ public class BBSDao {
 	public AttachFileVo selectAttachFileByFNO(int fNO){
 		return sqlSession.selectOne("bbs.selectAttachFileByFNO",fNO);
 	}
+	
+	public BoardVo selectBoardNo(int no){
+		return sqlSession.selectOne("bbs.selectBoard",no);
+	}
 
 }

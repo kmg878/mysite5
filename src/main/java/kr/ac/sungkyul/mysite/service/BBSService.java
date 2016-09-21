@@ -68,5 +68,9 @@ public class BBSService {
 	public AttachFileVo selectAttachFileByFNO(int fNO){
 		return bbsDAO.selectAttachFileByFNO(fNO);
 	}
+	
+	public BoardVo selectBoardNo(int no){
+		return bbsDAO.selectBoardNo(no);
+	}
 
 }
